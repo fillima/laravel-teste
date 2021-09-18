@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Site\HomeController;
+use App\Http\Controllers\Site\UrlController;
+use App\Http\Controllers\Site\CadastrarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, '__invoke']);
+
+Route::get('urls', [UrlController::class, 'index']);
+Route::get('urls/{slug}', [UrlController::class, 'show']);
+
+Route::get('cadastrar', [CadastrarController::class, 'index']);
+Route::post('cadastrar', [CadastrarController::class, 'create']);
