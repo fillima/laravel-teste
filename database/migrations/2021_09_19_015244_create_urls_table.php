@@ -17,8 +17,8 @@ class CreateUrlsTable extends Migration
             $table->id();
             $table->foreignId(column: 'user_id')->constrained();
             $table->string(column: 'url');
-            $table->string(column: 'status');
-            $table->string(column: 'body_request');
+            $table->string(column: 'status')->default('');
+            $table->string(column: 'body_request')->default('');
             $table->timestamps();
             $table->softDeletes();
         });

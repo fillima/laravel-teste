@@ -14,8 +14,6 @@ class Url extends Model
     protected $fillable = [
         'user_id',
         'url',
-        'status',
-        'body_request'
     ];
 
     protected $dates = [
