@@ -20,9 +20,9 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('home', [UrlController::class, 'index']);
+Route::get('home', [UrlController::class, 'index'])->name('url.home');
 Route::get('urls/{slug}', [UrlController::class, 'show']);
 
-Route::get('cadastrar', [CadastrarController::class, 'index']);
-Route::post('cadastrar', [CadastrarController::class, 'create']);
+Route::get('cadastrar', [CadastrarController::class, 'index'])->name('cadastrar.home');
+Route::post('cadastrar', [CadastrarController::class, 'store'])->name('cadastrar.form');
 

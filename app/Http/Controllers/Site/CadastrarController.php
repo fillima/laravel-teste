@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Url;
 use Illuminate\Http\Request;
 
 class CadastrarController extends Controller
@@ -12,9 +13,9 @@ class CadastrarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view(view: 'site.cadastrar.index');
+        return view('site.cadastrar.index');
     }
 
     /**
@@ -35,7 +36,11 @@ class CadastrarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Url::create($request->all());
+
+        toastr()->success('Sua rota foi adicionada com sucesso', 'Parabéns', ['timeOut' => 5000]);
+
+        return redirect()->route('url.home');
     }
 
     /**
