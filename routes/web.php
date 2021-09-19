@@ -16,10 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, '__invoke']);
+Auth::routes();
 
-Route::get('urls', [UrlController::class, 'index']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('home', [UrlController::class, 'index']);
 Route::get('urls/{slug}', [UrlController::class, 'show']);
 
 Route::get('cadastrar', [CadastrarController::class, 'index']);
 Route::post('cadastrar', [CadastrarController::class, 'create']);
+
