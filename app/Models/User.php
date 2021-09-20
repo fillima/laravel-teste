@@ -43,6 +43,6 @@ class User extends Authenticatable
 
     public function urls()
     {
-        return $this->hasMany(related:Url::class);
+        return $this->hasMany(Url::class);
     }
 }
