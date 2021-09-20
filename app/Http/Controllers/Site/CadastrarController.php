@@ -40,7 +40,7 @@ class CadastrarController extends Controller
 
         toastr()->success('Sua rota foi adicionada com sucesso', 'Parabéns', ['timeOut' => 5000]);
 
-        return redirect()->route('url.home');
+        return redirect()->route('url.home', $request->input('user_id'));
     }
 
     /**
