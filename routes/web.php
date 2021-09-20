@@ -20,7 +20,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('home/{id}', [UrlController::class, 'index'])->name('url.home');
+Route::get('home', [UrlController::class, 'index'])->name('url.home');
 Route::get('url/{id}', [UrlController::class, 'store'])->name('url.update');
 
 Route::get('cadastrar', [CadastrarController::class, 'index'])->name('cadastrar.home');
