@@ -31,18 +31,9 @@
 
                 <div class="card-body">
                     <table class="table table-bordered table-urls">
-                        <tr>
-                            <td>Url</td>
-                            <td>Status</td>
-                            <td>Resposta</td>
+                        <tr class="table-secondary">
+                            <th>Clique no botão de atualizar para mostrar suas rotas</th>
                         </tr>
-                        @foreach($urls as $url)
-                        <tr>
-                            <td>{{$url->url}}</td>
-                            <td>{{$url->status}}</td>
-                            <td>{{$url->body_request}}</td>
-                        </tr>
-                        @endforeach
                     </table>
                 </div>
             </div>

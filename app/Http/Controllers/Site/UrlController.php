@@ -15,11 +15,9 @@ class UrlController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        return view('site.url.index', [
-            'urls' => Url::where('user_id', '=', $id)->get()
-        ]);
+        return view('site.url.index');
     }
 
     /**
@@ -67,7 +65,9 @@ class UrlController extends Controller
      */
     public function show($id)
     {
-        return view('site.url.show');
+        return view('site.url.show', [
+            'urls' => Url::where('user_id', '=', $id)->get()
+        ]);
     }
 
     /**
