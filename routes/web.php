@@ -20,9 +20,10 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('home/{id}', [UrlController::class, 'index'])->name('url.home');
-Route::get('url/{id}', [UrlController::class, 'store'])->name('url.update');
+Route::get('home', [UrlController::class, 'index'])->name('url.home')->middleware('auth');
+Route::get('list/{id}', [UrlController::class, 'show'])->name('url.show')->middleware('auth');
+Route::get('url/{id}', [UrlController::class, 'store'])->name('url.update')->middleware('auth');
 
-Route::get('cadastrar', [CadastrarController::class, 'index'])->name('cadastrar.home');
-Route::post('cadastrar', [CadastrarController::class, 'store'])->name('cadastrar.form');
+Route::get('cadastrar', [CadastrarController::class, 'index'])->name('cadastrar.home')->middleware('auth');
+Route::post('cadastrar', [CadastrarController::class, 'store'])->name('cadastrar.form')->middleware('auth');
 
