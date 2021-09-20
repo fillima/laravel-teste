@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Url;
+use App\Http\Middleware\GetHttpStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UrlController extends Controller
 {
@@ -12,9 +15,11 @@ class UrlController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view(view: 'site.url.index');
+        return view('site.url.index', [
+            'urls' => Url::where('user_id', '=', $id)->get()
+        ]);
     }
 
     /**
@@ -33,9 +38,25 @@ class UrlController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, GetHttpStatus $get_status, $id)
     {
-        //
+        $urls = Url::all();
+        $status = '';
+
+        foreach ($urls as $url) {
+            $status = $get_status->getHTTPResponseStatusCode($url['url']);
+
+            $code_status = explode(" ", $status);
+
+            if($status == null) {
+                $code_status[0] = '500';
+                $code_status[1] = 'Server Error';
+            }
+
+            DB::table('urls')->where('id', $url['id'])->update(['status' => $code_status[0], 'body_request' => $code_status[1]]);
+        }
+
+        return Url::where('user_id', '=', $id)->get();
     }
 
     /**
