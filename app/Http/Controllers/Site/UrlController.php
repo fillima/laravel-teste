@@ -67,7 +67,7 @@ class UrlController extends Controller
      */
     public function show($id)
     {
-        return view(view: 'site.url.show');
+        return view('site.url.show');
     }
 
     /**
