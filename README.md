@@ -7,3 +7,5 @@ A tela inicial mostra um botão para atualizar uma lista de rotas salvas previam
 
 Na tela de adicionar uma rota para análise, é permitido apenas urls válidas.
 
+
+http://18.228.12.16/
